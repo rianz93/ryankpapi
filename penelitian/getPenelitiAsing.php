@@ -1,7 +1,7 @@
 <?php 
 	require '../api_conf.php';
 
-	$head = array("Tahun", "Nama", "Akademik", "Negara", "Tanggal");
+	$head = array("Tahun", "Nama","Jenis Kelamin", "Akademik", "Negara", "Tanggal mulai",);
 	$body = [];
 
 	$peneliti_temp = json_decode($dale->kueri("SELECT * FROM `peneliti_asing`"));
@@ -22,10 +22,10 @@
 		$body[$i][3] = array('title' => $peneliti_jenis_kelamin, 	'type' => 'text');
 		$body[$i][4] = array('title' => $peneliti_akademik, 		'type' => 'text');
 		$body[$i][5] = array('title' => $peneliti_negara, 			'type' => 'text');
-		$body[$i][6] = array('title' => $peneliti_tanggal_mulai, 	'type' => 'text');
-		$body[$i][7] = array('title' => $peneliti_tanggal_selesai, 	'type' => 'text');
+		$body[$i][6] = array('title' => $peneliti_tanggal_mulai." sd".$peneliti_tanggal_selesai, 	'type' => 'text');
 
 		$data_pack = array('head' => $head, 'body' => $body);
 		echo json_encode($data_pack);
 	}
  ?>
+
