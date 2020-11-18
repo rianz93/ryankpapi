@@ -1,7 +1,7 @@
 <?php 
 	require '../api_conf.php';
 
-	$head = array("Tahun", "Nama","Jenis Kelamin", "Akademik", "Negara", "Tanggal mulai",);
+	$head = array("Tahun", "Nama","Jenis Kelamin", "Akademik", "Negara", "Tanggal tinggal",);
 	$body = [];
 
 	$peneliti_temp = json_decode($dale->kueri("SELECT * FROM `peneliti_asing`"));
