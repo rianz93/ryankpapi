@@ -15,7 +15,7 @@
 		$peneliti_negara 			= $peneliti_temp[$i] -> peneliti_negara;
 		$peneliti_tanggal_mulai 	= $peneliti_temp[$i] -> peneliti_tanggal_mulai;
 		$peneliti_tanggal_selesai 	= $peneliti_temp[$i] -> peneliti_tanggal_selesai;
-		$peneliti_periode = [$peneliti_tanggal_mulai, $peneliti_tanggal_selesai];
+		$peneliti_periode 			= [$peneliti_tanggal_mulai, $peneliti_tanggal_selesai];
 		
 		$body[$i][0] = array('title' => $peneliti_id, 	 			'type' => 'id');
 		$body[$i][1] = array('title' => $peneliti_tahun, 			'type' => 'text');
@@ -26,7 +26,8 @@
 		$body[$i][6] = array('title' => $peneliti_periode, 			'type' => 'text');
 
 		$data_pack = array('head' => $head, 'body' => $body);
-		echo json_encode($data_pack);
+		
 	}
+	echo json_encode($data_pack);
  ?>
 

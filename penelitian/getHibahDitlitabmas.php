@@ -21,10 +21,11 @@ for($i= 0; $i < sizeof($hibah_ditlitabmas_temp); $i++){
 	$body[$i][3] = array('title' => $hibah_ditlitabmas_personil_penelitian, 	'type' => 'text');
 	$body[$i][4] = array('title' => $hibah_ditlitabmas_jabatan, 				'type' => 'text');
 	$body[$i][5] = array('title' => $hibah_ditlitabmas_bidang_penelitian, 		'type' => 'text');
-	$body[$i][6] = array('title' => $hibah_ditlitabmas_dana,					'type' => 'text');
+	$body[$i][6] = array('title' => $hibah_ditlitabmas_dana,					'type' => 'int');
+	
 	$data_pack = array('head' => $head, 'body' => $body);
- 	echo json_encode($data_pack);
-
+ 	
 }
- 
+ echo json_encode($data_pack);
+
  ?>
