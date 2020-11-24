@@ -2,18 +2,48 @@
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Headers: *');
 
-$dir_berkas = "berkas/";
-$nama_file_smntara = ($_FILES['berkas']['tmp_name']);
-$nama_file = ($_FILES['berkas']['name']);
-$uploadFile = move_uploaded_file($nama_file_smntara, $dir_berkas.$nama_file);
+require '../api_conf.php';
 
-if($uploadFile){
-	echo "upload berhasil ";
-	echo "Link: ".$dir_berkas.$nama_file.$nama_file;
-}else{
-	echo "upload gagal";
+// // MENGECEK ROW DAN MEMBUAT ID BERDASARKAN ROW
+$check_row 	= json_decode($dale->kueri("SELECT COUNT(*) as total FROM `peneliti_asing`"));
+$total_row 	= $check_row[0] -> total;
+$new_id 	= "PA". + ($total_row + 1);
+
+if(count($_POST) == 0){ 
+	echo json_encode(array('status' =>'gagal'));
 }
+else{
+	if(isset($_POST['id'])){
+		$id = $_POST['id'];
+	}
+	else{
+		$id = $new_id;
+	}
 
+	// MEMASUKKAN DATA DALAM DATABASE
+	$dale-> kueri("INSERT INTO `peneliti_asing` 
+				   SET 	peneliti_id 			 = '".$id."',
+				   		peneliti_tahun 			 = '".$_POST['tahun']."',
+				   		peneliti_nama 			 = '".$_POST['nama']."',
+				   		peneliti_jenis_kelamin 	 = '".$_POST['jenisKelamin']."',
+				   		peneliti_akademik 		 = '".$_POST['akademik']."',
+				   		peneliti_negara 		 = '".$_POST['negara']."',
+				   		peneliti_tanggal_mulai 	 = '".$_POST['tanggalstart']."',
+				   		peneliti_tanggal_selesai = '".$_POST['tanggalend']."'
+
+				   		ON DUPLICATE KEY UPDATE
+
+				   		peneliti_tahun 			 = '".$_POST['tahun']."',
+				   		peneliti_nama 			 = '".$_POST['nama']."',
+				   		peneliti_jenis_kelamin 	 = '".$_POST['jenisKelamin']."',
+				   		peneliti_akademik 		 = '".$_POST['akademik']."',
+				   		peneliti_negara 		 = '".$_POST['negara']."',
+				   		peneliti_tanggal_mulai 	 = '".$_POST['tanggalstart']."',
+				   		peneliti_tanggal_selesai = '".$_POST['tanggalend']."'
+				 	");
+
+	echo json_encode(array('status' =>'berhasil'));
+}
 
 ?>
 
