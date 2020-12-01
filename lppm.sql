@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2020 at 07:19 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: Dec 01, 2020 at 09:56 AM
+-- Server version: 10.4.16-MariaDB
+-- PHP Version: 7.4.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,13 +29,22 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `hibah_ditlitabmas` (
   `hibah_id` varchar(20) NOT NULL,
-  `hibah_tahun_kegiatan` date NOT NULL,
+  `hibah_tahun_kegiatan` varchar(35) NOT NULL,
   `hibah_judul_penelitian` varchar(50) NOT NULL,
   `hibah_personil_penelitian` varchar(50) NOT NULL,
   `hibah_jabatan` varchar(20) NOT NULL,
   `hibah_bidang_penelitian` varchar(20) NOT NULL,
   `hibah_dana` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `hibah_ditlitabmas`
+--
+
+INSERT INTO `hibah_ditlitabmas` (`hibah_id`, `hibah_tahun_kegiatan`, `hibah_judul_penelitian`, `hibah_personil_penelitian`, `hibah_jabatan`, `hibah_bidang_penelitian`, `hibah_dana`) VALUES
+('HD1', '2018', 'IOT Minyak bumi', 'Bragi wewengkang', 'pengusul', 'bio kimia', 20000000),
+('HD5', '2018', 'IOT Minyak bumi', 'Bragi wewengkang', 'pengusul', 'bio kimia', 20000000),
+('HD8', '2018', 'IOT Minyak bumi', 'Bragi wewengkang', 'pengusul', 'bio kimia', 20000000);
 
 -- --------------------------------------------------------
 
@@ -45,7 +54,7 @@ CREATE TABLE `hibah_ditlitabmas` (
 
 CREATE TABLE `hibah_nonditlitabmas` (
   `hibah_nonditlitabmas_id` varchar(10) NOT NULL,
-  `hibah_nonditlitabmas_tahun_kegiatan` date NOT NULL,
+  `hibah_nonditlitabmas_tahun_kegiatan` varchar(35) NOT NULL,
   `hibah_nonditlitabmas_judul_penelitian` varchar(50) NOT NULL,
   `hibah_nonditlitabmas_personil_penelitian` varchar(50) NOT NULL,
   `hibah_nonditlitabmas_jabatan` varchar(35) NOT NULL,
@@ -64,7 +73,7 @@ CREATE TABLE `hibah_nonditlitabmas` (
 
 CREATE TABLE `penelitian_buku_ajar` (
   `buku_ajar_id` varchar(10) NOT NULL,
-  `buku_ajar_tahun` date NOT NULL,
+  `buku_ajar_tahun` varchar(35) NOT NULL,
   `buku_ajar_nama_dosen` varchar(35) NOT NULL,
   `buku_ajar_NIDN` varchar(35) NOT NULL,
   `buku_ajar_judul` varchar(50) NOT NULL,
@@ -83,7 +92,7 @@ CREATE TABLE `penelitian_buku_ajar` (
 CREATE TABLE `penelitian_forum_ilmiah` (
   `forum_ilmiah_id` varchar(20) NOT NULL,
   `forum_ilmiah_jenis` varchar(35) NOT NULL,
-  `forum_ilmiah_tahun_kegiatan` date NOT NULL,
+  `forum_ilmiah_tahun_kegiatan` varchar(35) NOT NULL,
   `forum_ilmiah_nama_dosen` varchar(50) NOT NULL,
   `forum_ilmiah_NIDN` varchar(20) NOT NULL,
   `forum_ilmiah_status` varchar(50) NOT NULL,
@@ -103,7 +112,7 @@ CREATE TABLE `penelitian_forum_ilmiah` (
 
 CREATE TABLE `penelitian_hki` (
   `hki_id` int(10) NOT NULL,
-  `hki_tahun` date NOT NULL,
+  `hki_tahun` varchar(35) NOT NULL,
   `hki_nama_dosen` varchar(50) NOT NULL,
   `hki_NIDN` varchar(35) NOT NULL,
   `hki_judul` varchar(50) NOT NULL,
@@ -123,7 +132,7 @@ CREATE TABLE `penelitian_hki` (
 CREATE TABLE `penelitian_jurnal` (
   `jurnal_id` varchar(10) NOT NULL,
   `jurnal_jenis_jurnal` varchar(99) NOT NULL,
-  `jurnal_tahun_kegiatan` date NOT NULL,
+  `jurnal_tahun_kegiatan` varchar(35) NOT NULL,
   `jurnal_judul_publikasi` varchar(50) NOT NULL,
   `jurnal_nama` varchar(50) NOT NULL,
   `jurnal_ISSN` varchar(20) NOT NULL,
@@ -133,6 +142,13 @@ CREATE TABLE `penelitian_jurnal` (
   `jurnal_berkas` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `penelitian_jurnal`
+--
+
+INSERT INTO `penelitian_jurnal` (`jurnal_id`, `jurnal_jenis_jurnal`, `jurnal_tahun_kegiatan`, `jurnal_judul_publikasi`, `jurnal_nama`, `jurnal_ISSN`, `jurnal_volume`, `jurnal_nomor`, `jurnal_url`, `jurnal_berkas`) VALUES
+('PJ1', 'Jurnal International', '2012', 'Antibacterial potential of catechin of tea (Camell', 'Food Research', 'eISSN 2550-2166', '3', '1', 'https://www.myfoodresearch.com', '');
+
 -- --------------------------------------------------------
 
 --
@@ -141,7 +157,7 @@ CREATE TABLE `penelitian_jurnal` (
 
 CREATE TABLE `penelitian_luaran` (
   `luaran_id` varchar(10) NOT NULL,
-  `luaran_tahun_kegiatan` date NOT NULL,
+  `luaran_tahun_kegiatan` varchar(35) NOT NULL,
   `luaran_nama_dosen` varchar(50) NOT NULL,
   `luaran_NIDN` varchar(35) NOT NULL,
   `luaran_luaran` varchar(35) NOT NULL,
@@ -158,7 +174,7 @@ CREATE TABLE `penelitian_luaran` (
 
 CREATE TABLE `peneliti_asing` (
   `peneliti_id` varchar(10) NOT NULL,
-  `peneliti_tahun` date NOT NULL,
+  `peneliti_tahun` varchar(35) NOT NULL,
   `peneliti_nama` varchar(99) NOT NULL,
   `peneliti_jenis_kelamin` varchar(20) NOT NULL,
   `peneliti_akademik` varchar(50) NOT NULL,
@@ -172,7 +188,8 @@ CREATE TABLE `peneliti_asing` (
 --
 
 INSERT INTO `peneliti_asing` (`peneliti_id`, `peneliti_tahun`, `peneliti_nama`, `peneliti_jenis_kelamin`, `peneliti_akademik`, `peneliti_negara`, `peneliti_tanggal_mulai`, `peneliti_tanggal_selesai`) VALUES
-('pa1', '2020-11-11', 'steven chow', 'laki-laki', 'informatika', 'perancis', '2020-11-04', '2020-11-06');
+('PA1', '2019', 'ryan supit', 'Pria', 'avatar', 'perancis', '2020-12-14', '2020-12-29'),
+('PA2', '2019', 'ryan supit 1', 'Pria', 'avatar', 'perancis', '2020-12-14', '2020-12-29');
 
 -- --------------------------------------------------------
 
@@ -182,10 +199,20 @@ INSERT INTO `peneliti_asing` (`peneliti_id`, `peneliti_tahun`, `peneliti_nama`, 
 
 CREATE TABLE `penulis` (
   `penulis_id` varchar(10) NOT NULL,
-  `junal_id` varchar(10) NOT NULL,
-  `penulis_nama_penulis` varchar(99) NOT NULL,
+  `jurnal_id` varchar(10) NOT NULL,
+  `penulis_nama` varchar(99) NOT NULL,
   `penulis_ke` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penulis`
+--
+
+INSERT INTO `penulis` (`penulis_id`, `jurnal_id`, `penulis_nama`, `penulis_ke`) VALUES
+('P1', 'PJ1', 'Bragy P. Wewengkang', 1),
+('P2', 'PJ1', 'Bragy P. Wewengkang', 2),
+('P3', 'PJ1', 'Bragy P. Wewengkang', 3),
+('P4', 'PJ1', 'Bragy P. Wewengkang', 4);
 
 -- --------------------------------------------------------
 
@@ -268,7 +295,8 @@ ALTER TABLE `peneliti_asing`
 -- Indexes for table `penulis`
 --
 ALTER TABLE `penulis`
-  ADD PRIMARY KEY (`penulis_id`);
+  ADD PRIMARY KEY (`penulis_id`),
+  ADD KEY `penulis_ibfk_1` (`jurnal_id`);
 
 --
 -- Indexes for table `penyelenggaraan_forum`
@@ -290,7 +318,7 @@ ALTER TABLE `unit_bisnis_hr`
 -- Constraints for table `penulis`
 --
 ALTER TABLE `penulis`
-  ADD CONSTRAINT `penulis_ibfk_1` FOREIGN KEY (`penulis_id`) REFERENCES `penelitian_jurnal` (`jurnal_id`);
+  ADD CONSTRAINT `penulis_ibfk_1` FOREIGN KEY (`jurnal_id`) REFERENCES `penelitian_jurnal` (`jurnal_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
