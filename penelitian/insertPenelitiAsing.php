@@ -7,7 +7,7 @@ require '../api_conf.php';
 // // MENGECEK ROW DAN MEMBUAT ID BERDASARKAN ROW
 $check_row 	= json_decode($dale->kueri("SELECT COUNT(*) as total FROM `peneliti_asing`"));
 $total_row 	= $check_row[0] -> total;
-$new_id 	= "PA". + ($total_row + 1);
+$new_id 	= "PA". + rand(10,99).+($total_row + 1);
 
 if(count($_POST) == 0){ 
 	echo json_encode(array('status' =>'gagal'));
@@ -20,6 +20,7 @@ else{
 		$id = $new_id;
 	}
 
+	
 	// MEMASUKKAN DATA DALAM DATABASE
 	$dale-> kueri("INSERT INTO `peneliti_asing` 
 				   SET 	peneliti_id 			 = '".$id."',
@@ -42,7 +43,7 @@ else{
 				   		peneliti_tanggal_selesai = '".$_POST['tanggalend']."'
 				 	");
 
-	echo json_encode(array('status' =>'berhasil'));
+	echo json_encode(array('status' => 'berhasil'));
 }
 
 ?>
