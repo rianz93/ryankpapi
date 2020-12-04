@@ -9,6 +9,6 @@
 
 	$dale = new dale();
 	$dale->konek_ke_database(HOST, DATABASE,USER,PASSWORD);
-	$API_ENDPOINT = "127.0.0.1/ryankp/";
+	$API_ENDPOINT = "http://localhost/ryankp/";
 
 ?>
