@@ -4,12 +4,15 @@ header('Access-Control-Allow-Headers: *');
 
 require '../api_conf.php';
 
-
-$dir_berkas 		= "berkas/";
-$nama_file_smntara 	= ($_FILES['berkas']['tmp_name']);
-$nama_file 			= ($_FILES['berkas']['name']);
-$uploadFile 		= move_uploaded_file($nama_file_smntara, $dir_berkas.$nama_file);
-
+if(isset($_FILES['berkas'])){
+	$dir_berkas 		= "berkas/";
+	$nama_file_smntara 	= ($_FILES['berkas']['tmp_name']);
+	$nama_file 			= ($_FILES['berkas']['name']);
+	$uploadFile 		= move_uploaded_file($nama_file_smntara, $dir_berkas.$nama_file);
+	$pathFile 			= $API_ENDPOINT."penelitian/".$dir_berkas.$nama_file;
+}else{
+	$pathFile = $_POST['berkas'];
+}
 // MENGECEK ROW DAN MEMBUAT ID BERDASARKAN ROW
 $check_row 	= json_decode($dale->kueri("SELECT COUNT(*) as total FROM `penelitian_hki`"));
 $total_row 	= $check_row[0] -> total;
@@ -38,7 +41,7 @@ else{
 				   		hki_no_pendaftaran 	= '".$_POST['noPendaftaran']."',
 				   		hki_status 			= '".$_POST['status']."',
 				   		hki_nomor 			= '".$_POST['noHki']."',
-				   		hki_berkas 			= '".$API_ENDPOINT."penelitian/".$dir_berkas.$nama_file."'
+				   		hki_berkas 			= '".$pathFile."'
 
 				   		ON DUPLICATE KEY UPDATE
 				   		
@@ -50,7 +53,7 @@ else{
 				   		hki_no_pendaftaran 	= '".$_POST['noPendaftaran']."',
 				   		hki_status 			= '".$_POST['status']."',
 				   		hki_nomor 			= '".$_POST['noHki']."',
-				   		hki_berkas 			= '".$API_ENDPOINT."penelitian/".$dir_berkas.$nama_file."'				   		
+				   		hki_berkas 			= '".$pathFile."'				   		
 				 	");
 
 	echo json_encode(array('status' => 'berhasil'));
