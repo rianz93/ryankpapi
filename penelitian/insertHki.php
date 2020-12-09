@@ -7,7 +7,7 @@ require '../api_conf.php';
 if(isset($_FILES['berkas'])){
 	$dir_berkas 		= "berkas/";
 	$nama_file_smntara 	= ($_FILES['berkas']['tmp_name']);
-	$nama_file 			= ($_FILES['berkas']['name']);
+	$nama_file 			= ("HK".rand(10,99).$_FILES['berkas']['name']);
 	$uploadFile 		= move_uploaded_file($nama_file_smntara, $dir_berkas.$nama_file);
 	$pathFile 			= $API_ENDPOINT."penelitian/".$dir_berkas.$nama_file;
 }else{
