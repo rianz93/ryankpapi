@@ -3,6 +3,7 @@
 
 	$head = array("Jenis Jurnal", "Tahun","Judul", "Nama Penulis","Jurnal", "Url");
 	$body = [];
+	$bodyExport = [];
 
 	$pj_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_jurnal`"));
 
@@ -27,6 +28,7 @@
 		$body[$i][1] 	= array('title' => $jurnal_jenis_jurnal, 	'type' => 'text');
 		$body[$i][2] 	= array('title' => $jurnal_tahun_kegiatan, 	'type' => 'text');
 		$body[$i][3] 	= array('title' => $jurnal_judul_publikasi, 'type' => 'text');
+		$penulis = [];
 		// MENGAMBIL PENULIS
 		for ($j=0; $j < sizeof($penulis_temp); $j++) { 
 			$penulis[$j] = $penulis_temp[$j] -> penulis_nama_penulis;
@@ -36,7 +38,19 @@
 		$body[$i][6]	= array('title' => $jurnal_url, 	'type' => 'text' );
 		$body[$i][7] 	= array('title' => $jurnal_berkas, 	'type' => 'file');
 
-		$data_pack = array('head' => $head, 'body' => $body);
+		$bodyExport[$i][0] = array('title' => $jurnal_jenis_jurnal, 	'type' => 'text');
+		$bodyExport[$i][1] = array('title' => $jurnal_tahun_kegiatan, 	'type' => 'text');	
+		$bodyExport[$i][2] = array('title' => $jurnal_judul_publikasi, 	'type' => 'text');
+		$bodyExport[$i][3] = array('title' => $penulis, 				'type' => 'text');
+		$bodyExport[$i][4] = array('title' => $jurnal_nama, 			'type' => 'text');
+		$bodyExport[$i][5] = array('title' => $jurnal_ISSN, 			'type' => 'text');
+		$bodyExport[$i][6] = array('title' => $jurnal_volume, 			'type' => 'text');
+		$bodyExport[$i][7] = array('title' => $jurnal_halaman, 			'type' => 'text');
+		$bodyExport[$i][8] = array('title' => $jurnal_nomor, 			'type' => 'text');
+		$bodyExport[$i][9] = array('title' => $jurnal_url, 				'type' => 'text');
+
+
+		$data_pack = array('head' => $head, 'body' => $body, 'bodyExport' => $bodyExport);
 		
 	}
 	echo json_encode($data_pack);

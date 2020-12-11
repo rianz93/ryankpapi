@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 header("Access-Control-Allow-Origin: *");
 header('Access-Control-Allow-Headers: *');
 
@@ -66,9 +66,9 @@ else{
 	
 
 	for($i = 0; $i < $_POST['totalPenulis']; $i++){
-		if($penulis_id_temp[$i] != null || $penulis_id_temp[$i] != undefined){
+		if(isset($penulis_id_temp[$i])){
 			$penulis_id = $penulis_id_temp[$i] -> penulis_id;
-		}else{
+		}else{ 
 			$penulis_id = "PS". + rand(10,99).+$i;
 		}
 
@@ -85,6 +85,10 @@ else{
 					  	  penulis_ke 			= '".($i+1)."'
 
 					  	  ");
+	}
+
+	for($i = $_POST['totalPenulis']; $i < sizeof($penulis_id_temp); $i++){
+		$dale->kueri("DELETE FROM penulis WHERE penulis_id = '".$penulis_id_temp[$i] -> penulis_id."'");
 	}
 
 	echo json_encode(array('status' => 'berhasil'));
