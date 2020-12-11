@@ -18,10 +18,6 @@ $check_row 	= json_decode($dale->kueri("SELECT COUNT(*) as total FROM `penelitia
 $total_row 	= $check_row[0] -> total;
 $new_id 	= "PJ". + rand(10,99).+($total_row + 1);
 
-if(!isset($_POST['penulisId'])){
-	$penulis_id = "PS". + rand(10,99);
-}
-
 if(count($_POST) == 0){ 
 	echo json_encode(array('status' =>'gagal'));
 }
@@ -29,11 +25,14 @@ else{
 
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
+
+	// MENARIK ID PENULIS BERDASARKAN JURNAL ID
+	$penulis_id_temp = json_decode($dale->kueri("SELECT penulis_id FROM penulis as a INNER JOIN penelitian_jurnal as b ON a.jurnal_id = b.jurnal_id WHERE a.jurnal_id = '".$id."' ORDER BY a.penulis_ke ASC"));	
 	}
 	else{
 		$id = $new_id;
+
 	}
-	
 
 	// MEMASUKKAN DATA DALAM DATABASE
 	$dale-> kueri("INSERT INTO `penelitian_jurnal` 
@@ -61,14 +60,31 @@ else{
 				   		jurnal_halaman 			= '".$_POST['halaman']."',
 				   		jurnal_url 				= '".$_POST['url']."',
 				   		jurnal_berkas 			= '".$pathFile."'		   		
+	
 				 	");
 
+	
+
 	for($i = 0; $i < $_POST['totalPenulis']; $i++){
+		if($penulis_id_temp[$i] != null || $penulis_id_temp[$i] != undefined){
+			$penulis_id = $penulis_id_temp[$i] -> penulis_id;
+		}else{
+			$penulis_id = "PS". + rand(10,99).+$i;
+		}
+
 		$dale->kueri("INSERT INTO `penulis`
-					  SET penulis_id = '".$penulis_id.$i."',
-					  	  jurnal_id  = '".$id."',
-					  	  penulis_nama_penulis = '".$_POST['penulis'.+$i]."',
-					  	  penulis_ke = '".($i+1)."'");
+					  SET penulis_id 			= '".$penulis_id."',
+					  	  jurnal_id 			= '".$id."',
+					  	  penulis_nama_penulis 	= '".$_POST['penulis'.+$i]."',
+					  	  penulis_ke 			= '".($i+1)."'
+
+					  	  ON DUPLICATE KEY UPDATE
+
+					  	  jurnal_id 			= '".$id."',
+					  	  penulis_nama_penulis 	= '".$_POST['penulis'.+$i]."',
+					  	  penulis_ke 			= '".($i+1)."'
+
+					  	  ");
 	}
 
 	echo json_encode(array('status' => 'berhasil'));

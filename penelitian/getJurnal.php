@@ -21,7 +21,7 @@
 
 		$jurnal = array('nama' => $jurnal_nama, 'issn' => $jurnal_ISSN, 'volume' => $jurnal_volume, 'halaman' => $jurnal_halaman, 'nomor' => $jurnal_nomor);
 
-		$penulis_temp = json_decode($dale->kueri("SELECT penulis_nama_penulis FROM `penulis` AS a INNER JOIN `penelitian_jurnal` AS b ON a.jurnal_id = b.jurnal_id WHERE a.jurnal_id = '".$jurnal_id."' ORDER BY a.penulis_nama_penulis ASC "));
+		$penulis_temp = json_decode($dale->kueri("SELECT penulis_nama_penulis FROM `penulis` AS a INNER JOIN `penelitian_jurnal` AS b ON a.jurnal_id = b.jurnal_id WHERE a.jurnal_id = '".$jurnal_id."' ORDER BY a.penulis_ke ASC "));
 		
 		$body[$i][0] 	= array('title' => $jurnal_id, 	 			'type' => 'id');
 		$body[$i][1] 	= array('title' => $jurnal_jenis_jurnal, 	'type' => 'text');
