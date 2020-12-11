@@ -44,7 +44,6 @@ else{
 				
 				   		ON DUPLICATE KEY UPDATE
 				   		
-				   		buku_ajar_id 			 	= '".$id."',
 				   		buku_ajar_tahun 			= '".$_POST['tahun']."',
 				   		buku_ajar_nama_dosen 		= '".$_POST['nama']."',
 				   		buku_ajar_NIDN 	 			= '".$_POST['nidn']."',

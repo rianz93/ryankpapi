@@ -33,7 +33,6 @@ else{
 
 				   		ON DUPLICATE KEY UPDATE
 
-				   		hibah_id 				 	= '".$id."',
 				   		hibah_tahun_kegiatan 		= '".$_POST['tahun']."',
 				   		hibah_judul_penelitian 		= '".$_POST['judul']."',
 				   		hibah_personil_penelitian 	= '".$_POST['personil']."',
