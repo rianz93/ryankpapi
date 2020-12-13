@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 11, 2020 at 07:07 AM
+-- Generation Time: Dec 13, 2020 at 07:05 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -72,7 +72,7 @@ CREATE TABLE `hibah_nonditlitabmas` (
 
 CREATE TABLE `penelitian_buku_ajar` (
   `buku_ajar_id` varchar(10) NOT NULL,
-  `buku_ajar_tahun` date NOT NULL,
+  `buku_ajar_tahun` varchar(35) NOT NULL,
   `buku_ajar_nama_dosen` varchar(35) NOT NULL,
   `buku_ajar_NIDN` varchar(35) NOT NULL,
   `buku_ajar_judul` varchar(50) NOT NULL,
@@ -81,6 +81,13 @@ CREATE TABLE `penelitian_buku_ajar` (
   `buku_ajar_jumlah_halaman` int(20) NOT NULL,
   `buku_ajar_halaman_cover` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penelitian_buku_ajar`
+--
+
+INSERT INTO `penelitian_buku_ajar` (`buku_ajar_id`, `buku_ajar_tahun`, `buku_ajar_nama_dosen`, `buku_ajar_NIDN`, `buku_ajar_judul`, `buku_ajar_penerbit`, `buku_ajar_ISBN`, `buku_ajar_jumlah_halaman`, `buku_ajar_halaman_cover`) VALUES
+('BA581', '2006', 'Eston Sulli S.T.', '17013078', 'Implementasi Password Hash Pada Aplikasi Web', 'Deep Publisher', '2554-2876', 50, 'http://localhost/ryankp/penelitian/berkas/BA84Generated (1).pdf');
 
 -- --------------------------------------------------------
 
@@ -122,6 +129,13 @@ CREATE TABLE `penelitian_hki` (
   `hki_berkas` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `penelitian_hki`
+--
+
+INSERT INTO `penelitian_hki` (`hki_id`, `hki_tahun`, `hki_nama_dosen`, `hki_NIDN`, `hki_judul`, `hki_jenis`, `hki_no_pendaftaran`, `hki_status`, `hki_nomor`, `hki_berkas`) VALUES
+('HK691', '2015', 'Ryan Erlando Supit S.T', '16013045', 'Implementasi Sistem Pendukung Keputusan dalam Musyawarah Masyarakat', 'Hak Cipta', 'EC22590100', 'Granted', '814322', 'http://localhost/ryankp/penelitian/berkas/HK59Generated (1).pdf');
+
 -- --------------------------------------------------------
 
 --
@@ -147,8 +161,8 @@ CREATE TABLE `penelitian_jurnal` (
 --
 
 INSERT INTO `penelitian_jurnal` (`jurnal_id`, `jurnal_jenis_jurnal`, `jurnal_tahun_kegiatan`, `jurnal_judul_publikasi`, `jurnal_nama`, `jurnal_ISSN`, `jurnal_volume`, `jurnal_halaman`, `jurnal_nomor`, `jurnal_url`, `jurnal_berkas`) VALUES
-('PJ252', 'Jurnal Internasional', '2019', 'Implementasi MD5 Pada Keamanan Komputer Berbasis Website Online dengan Analisis Data', 'Implementasi MD5 Pada Keamanan Komputer B ', '2881-215092', '4', '78', '14', 'biotech/indoMd5encrytion.com', 'http://localhost/ryankp/penelitian/berkas/PJ52Generated.pdf'),
-('PJ571', 'Jurnal Internasional', '2018', 'IOT serangan fajar ', 'rere', 'awer', 'awer', 'awer', 'awer', 'awer', 'http://localhost/ryankp/penelitian/berkas/PJ10Generated.pdf');
+('PJ213', 'Jurnal Nasional Terakreditasi', '2015', 'IOT Pengenalan Sistem Informasi Terhadap Masyarakat', 'Realtech ', '2525-2566', '4', '19-68', '15', 'rin.com', 'http://localhost/ryankp/penelitian/berkas/PJ13Generated.pdf'),
+('PJ252', 'Jurnal Internasional', '2019', 'Implementasi MD5 Pada Keamanan Komputer Berbasis Website Online dengan Analisis Data', 'Implementasi MD5 Pada Keamanan Komputer B ', '2881-2150', '4', '92', '14', 'biotech/indoMd5encrytion.com', 'http://localhost/ryankp/penelitian/berkas/PJ52Generated.pdf');
 
 -- --------------------------------------------------------
 
@@ -190,8 +204,7 @@ CREATE TABLE `peneliti_asing` (
 
 INSERT INTO `peneliti_asing` (`peneliti_id`, `peneliti_tahun`, `peneliti_nama`, `peneliti_jenis_kelamin`, `peneliti_akademik`, `peneliti_negara`, `peneliti_tanggal_mulai`, `peneliti_tanggal_selesai`) VALUES
 ('PA142', '2020', 'Keny Sompotan', 'Pria', 'Master', 'Indonesia', '2020-12-24', '2022-04-30'),
-('PA644', '2018', 'Hizkia Tontong', 'Pria', 'informatika', 'Perancis', '2020-12-01', '2020-12-31'),
-('PA801', '2019', 'Ryan Erlando Supit', 'Pria', 'Bachelor', 'Perancis', '2020-12-09', '2021-03-27');
+('PA644', '2018', 'Hizkia Tontong', 'Pria', 'informatika', 'Perancis', '2020-12-01', '2020-12-31');
 
 -- --------------------------------------------------------
 
@@ -211,10 +224,9 @@ CREATE TABLE `penulis` (
 --
 
 INSERT INTO `penulis` (`penulis_id`, `jurnal_id`, `penulis_nama_penulis`, `penulis_ke`) VALUES
-('PS310', 'PJ252', 'Hizkia Tontong', 1),
-('PS640', 'PJ571', 'Adryan Honarto', 1),
-('PS641', 'PJ571', 'Jason Pasuhuk', 2),
-('PS642', 'PJ571', 'Marcelino Langitan', 3);
+('PS310', 'PJ252', 'Bragi Wewengkang S.T.', 1),
+('PS320', 'PJ213', 'Ryan Supit S.T.', 1),
+('PS551', 'PJ213', 'Keny Sompotan S.Kom.', 2);
 
 -- --------------------------------------------------------
 
@@ -224,15 +236,22 @@ INSERT INTO `penulis` (`penulis_id`, `jurnal_id`, `penulis_nama_penulis`, `penul
 
 CREATE TABLE `penyelenggaraan_forum` (
   `penyelenggaraan_forum_id` varchar(10) NOT NULL,
-  `penyelenggaraan_forum_tahun_kegiatan` date NOT NULL,
+  `penyelenggaraan_forum_tahun_kegiatan` varchar(35) NOT NULL,
   `penyelenggaraan_forum_nama_kegiatan` varchar(50) NOT NULL,
   `penyelenggaraan_forum_level` varchar(35) NOT NULL,
   `penyelenggaraan_forum_pelaksana` varchar(35) NOT NULL,
-  `penyelenggaraan_forum_mitra` int(35) NOT NULL,
+  `penyelenggaraan_forum_mitra` varchar(35) NOT NULL,
   `penyelenggaraan_forum_tanggal_mulai` date NOT NULL,
   `penyelenggaraan_forum_tanggal_selesai` date NOT NULL,
   `penyelenggaraan_forum_tempat` varchar(35) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `penyelenggaraan_forum`
+--
+
+INSERT INTO `penyelenggaraan_forum` (`penyelenggaraan_forum_id`, `penyelenggaraan_forum_tahun_kegiatan`, `penyelenggaraan_forum_nama_kegiatan`, `penyelenggaraan_forum_level`, `penyelenggaraan_forum_pelaksana`, `penyelenggaraan_forum_mitra`, `penyelenggaraan_forum_tanggal_mulai`, `penyelenggaraan_forum_tanggal_selesai`, `penyelenggaraan_forum_tempat`) VALUES
+('PF332', '2012', 'Pelaksanaan Pohon Terang IOT', 'Regional', 'Fakultas Teknik', 'Unika De La Salle Manado', '2020-12-01', '2020-12-31', 'Manado, jln Martadinata No. 77');
 
 -- --------------------------------------------------------
 
