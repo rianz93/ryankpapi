@@ -7,7 +7,7 @@ require '../api_conf.php';
 if(isset($_FILES['berkas'])){
 	$dir_berkas 		= "berkas/";
 	$nama_file_smntara 	= ($_FILES['berkas']['tmp_name']);
-	$nama_file 			= ("PJ".rand(10,99).$_FILES['berkas']['name']);
+	$nama_file 			= ("PJ".rand(10,99)."jurnal.PDF");
 	$uploadFile 		= move_uploaded_file($nama_file_smntara, $dir_berkas.$nama_file);
 	$pathFile 			= $API_ENDPOINT."penelitian/".$dir_berkas.$nama_file;
 }else{
@@ -66,7 +66,7 @@ else{
 	
 
 	for($i = 0; $i < $_POST['totalPenulis']; $i++){
-		if(isset($penulis_id_temp[$i])){
+		if(isset($_POST['id'])){
 			$penulis_id = $penulis_id_temp[$i] -> penulis_id;
 		}else{ 
 			$penulis_id = "PS". + rand(10,99).+$i;
@@ -86,11 +86,11 @@ else{
 
 					  	  ");
 	}
-
-	for($i = $_POST['totalPenulis']; $i < sizeof($penulis_id_temp); $i++){
-		$dale->kueri("DELETE FROM penulis WHERE penulis_id = '".$penulis_id_temp[$i] -> penulis_id."'");
+	if(isset($_POST['id'])){
+		for($i = $_POST['totalPenulis']; $i < sizeof($penulis_id_temp); $i++){
+			$dale->kueri("DELETE FROM penulis WHERE penulis_id = '".$penulis_id_temp[$i] -> penulis_id."'");
+		}
 	}
-
 	echo json_encode(array('status' => 'berhasil'));
 }
 

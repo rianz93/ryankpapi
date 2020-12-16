@@ -5,7 +5,7 @@
 	$body = [];
 	$bodyExport = [];
 
-	$pj_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_jurnal`"));
+	$pj_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_jurnal` ORDER BY jurnal_tahun_kegiatan DESC"));
 
 	for($i = 0; $i < sizeof($pj_temp); $i++){
 		$jurnal_id 					= $pj_temp[$i] -> jurnal_id;
