@@ -67,7 +67,12 @@ else{
 
 	for($i = 0; $i < $_POST['totalPenulis']; $i++){
 		if(isset($_POST['id'])){
-			$penulis_id = $penulis_id_temp[$i] -> penulis_id;
+			if(isset($penulis_id_temp[$i] -> penulis_id)){
+				$penulis_id = $penulis_id_temp[$i] -> penulis_id;
+			}else{
+				$penulis_id = "PS". + rand(10,99).+$i;
+			}
+
 		}else{ 
 			$penulis_id = "PS". + rand(10,99).+$i;
 		}
