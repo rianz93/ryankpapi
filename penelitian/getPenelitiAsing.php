@@ -26,7 +26,6 @@
 		$body[$i][6] = array('title' => $peneliti_periode, 			'type' => 'periodic');
 
 		$data_pack = array('head' => $head, 'body' => $body);
-		
 	}
 	echo json_encode($data_pack);
  ?>
