@@ -25,7 +25,7 @@ else{
 	$dale-> kueri("INSERT INTO `penyelenggaraan_forum` 
 				   SET 	penyelenggaraan_forum_id 				= '".$id."',
 				   		penyelenggaraan_forum_tahun_kegiatan 	= '".$_POST['tahun']."',
-				   		penyelenggaraan_forum_nama_kegiatan		= '".$_POST['nama']."',
+				   		penyelenggaraan_forum_nama_kegiatan		= '".$_POST['namaKegiatan']."',
 				   		penyelenggaraan_forum_level 	 		= '".$_POST['level']."',
 				   		penyelenggaraan_forum_pelaksana 		= '".$_POST['pelaksana']."',
 				   		penyelenggaraan_forum_mitra 			= '".$_POST['mitra']."',
@@ -36,7 +36,7 @@ else{
 				   		ON DUPLICATE KEY UPDATE
 
 				   		penyelenggaraan_forum_tahun_kegiatan 	= '".$_POST['tahun']."',
-				   		penyelenggaraan_forum_nama_kegiatan		= '".$_POST['nama']."',
+				   		penyelenggaraan_forum_nama_kegiatan		= '".$_POST['namaKegiatan']."',
 				   		penyelenggaraan_forum_level 	 		= '".$_POST['level']."',
 				   		penyelenggaraan_forum_pelaksana 		= '".$_POST['pelaksana']."',
 				   		penyelenggaraan_forum_mitra 			= '".$_POST['mitra']."',

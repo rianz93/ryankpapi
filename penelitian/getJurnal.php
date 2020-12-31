@@ -5,8 +5,11 @@
 	$body = [];
 	$bodyExport = [];
 
-	$pj_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_jurnal` ORDER BY jurnal_tahun_kegiatan DESC"));
-
+	if(isset($_GET['id'])){
+		$pj_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_jurnal` WHERE user_id ='".$_GET['id']."' ORDER BY jurnal_tahun_kegiatan DESC"));
+	}else{
+		$pj_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_jurnal` ORDER BY jurnal_tahun_kegiatan DESC"));
+	}
 	for($i = 0; $i < sizeof($pj_temp); $i++){
 		$jurnal_id 					= $pj_temp[$i] -> jurnal_id;
 		$jurnal_jenis_jurnal 		= $pj_temp[$i] -> jurnal_jenis_jurnal;

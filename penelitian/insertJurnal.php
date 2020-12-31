@@ -33,7 +33,9 @@ else{
 		$id = $new_id;
 
 	}
-
+	if($_POST['user_id']){
+		$user_id = $_POST['user_id'];
+	}
 	// MEMASUKKAN DATA DALAM DATABASE
 	$dale-> kueri("INSERT INTO `penelitian_jurnal` 
 				   SET 	jurnal_id 			 	= '".$id."',
@@ -46,6 +48,7 @@ else{
 				   		jurnal_nomor 			= '".$_POST['nomor']."',
 				   		jurnal_halaman 			= '".$_POST['halaman']."',
 				   		jurnal_url 				= '".$_POST['url']."',
+				   		user_id					= '".$user_id."',
 				   		jurnal_berkas 			= '".$pathFile."'
 
 				   		ON DUPLICATE KEY UPDATE
