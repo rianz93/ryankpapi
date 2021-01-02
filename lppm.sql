@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2020 at 05:23 PM
--- Server version: 10.4.16-MariaDB
--- PHP Version: 7.4.12
+-- Generation Time: Jan 02, 2021 at 09:22 AM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -34,6 +35,7 @@ CREATE TABLE `hibah_ditlitabmas` (
   `hibah_personil_penelitian` varchar(50) NOT NULL,
   `hibah_jabatan` varchar(20) NOT NULL,
   `hibah_bidang_penelitian` varchar(20) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `hibah_dana` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -41,8 +43,8 @@ CREATE TABLE `hibah_ditlitabmas` (
 -- Dumping data for table `hibah_ditlitabmas`
 --
 
-INSERT INTO `hibah_ditlitabmas` (`hibah_id`, `hibah_tahun_kegiatan`, `hibah_judul_penelitian`, `hibah_personil_penelitian`, `hibah_jabatan`, `hibah_bidang_penelitian`, `hibah_dana`) VALUES
-('HD931', '2019', 'iot tetete', 'firman', 'pengusul', 'biotech', 14000000);
+INSERT INTO `hibah_ditlitabmas` (`hibah_id`, `hibah_tahun_kegiatan`, `hibah_judul_penelitian`, `hibah_personil_penelitian`, `hibah_jabatan`, `hibah_bidang_penelitian`, `user_id`, `hibah_dana`) VALUES
+('HD931', '2019', 'iot tetete', 'firman', 'pengusul', 'biotech', 0, 14000000);
 
 -- --------------------------------------------------------
 
@@ -60,6 +62,7 @@ CREATE TABLE `hibah_nonditlitabmas` (
   `hibah_nonditlitabmas_bidang_penelitian` varchar(50) NOT NULL,
   `hibah_nonditlitabmas_sumber_dana` varchar(50) NOT NULL,
   `hibah_nonditlitabmas_institusi` varchar(35) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `hibah_nonditlitabmas_jumlah_dana` int(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -78,6 +81,7 @@ CREATE TABLE `penelitian_buku_ajar` (
   `buku_ajar_penerbit` varchar(35) NOT NULL,
   `buku_ajar_ISBN` varchar(35) NOT NULL,
   `buku_ajar_jumlah_halaman` int(20) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `buku_ajar_halaman_cover` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -99,6 +103,7 @@ CREATE TABLE `penelitian_forum_ilmiah` (
   `forum_ilmiah_nama` varchar(50) NOT NULL,
   `forum_ilmiah_tanggal_mulai` date NOT NULL,
   `forum_ilmiah_tanggal_selesai` date NOT NULL,
+  `user_id` int(10) NOT NULL,
   `forum_ilmiah_berkas` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -118,6 +123,7 @@ CREATE TABLE `penelitian_hki` (
   `hki_no_pendaftaran` varchar(35) NOT NULL,
   `hki_status` varchar(35) NOT NULL,
   `hki_nomor` varchar(35) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `hki_berkas` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -138,6 +144,7 @@ CREATE TABLE `penelitian_jurnal` (
   `jurnal_halaman` varchar(35) NOT NULL,
   `jurnal_nomor` varchar(20) NOT NULL,
   `jurnal_url` varchar(99) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `jurnal_berkas` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -145,9 +152,10 @@ CREATE TABLE `penelitian_jurnal` (
 -- Dumping data for table `penelitian_jurnal`
 --
 
-INSERT INTO `penelitian_jurnal` (`jurnal_id`, `jurnal_jenis_jurnal`, `jurnal_tahun_kegiatan`, `jurnal_judul_publikasi`, `jurnal_nama`, `jurnal_ISSN`, `jurnal_volume`, `jurnal_halaman`, `jurnal_nomor`, `jurnal_url`, `jurnal_berkas`) VALUES
-('PJ252', 'Jurnal Internasional', '2019', 'Implementasi MD5 Pada Keamanan Komputer Berbasis Website Online dengan Analisis Data', 'Implementasi MD5 Pada Keamanan Komputer B ', '2881-215092', '5', '78', '14', 'biotech/indoMd5encrytion.com', 'http://localhost/ryankp/penelitian/berkas/PJ52Generated.pdf'),
-('PJ912', 'Jurnal Internasional', '2019', 'Pengenalan IOT dan implementasi terhadap masyarakat tentang pengembangan IOT alat pendeteksi bencana', 'Realtech Nasional', '2089-4500', '3', '12-67', '6', 'github.com/ryankp.com', 'http://localhost/ryankp/penelitian/berkas/PJ97Generated.pdf');
+INSERT INTO `penelitian_jurnal` (`jurnal_id`, `jurnal_jenis_jurnal`, `jurnal_tahun_kegiatan`, `jurnal_judul_publikasi`, `jurnal_nama`, `jurnal_ISSN`, `jurnal_volume`, `jurnal_halaman`, `jurnal_nomor`, `jurnal_url`, `user_id`, `jurnal_berkas`) VALUES
+('PJ252', 'Jurnal Internasional', '2019', 'Implementasi MD5 Pada Keamanan Komputer Berbasis Website Online dengan Analisis Data', 'Implementasi MD5 Pada Keamanan Komputer B ', '2881-2150', '5', '78', '14', 'biotech/indoMd5encrytion.com', 1, 'http://localhost/ryankp/penelitian/berkas/PJ52Generated.pdf'),
+('PJ903', 'Jurnal Nasional Terakreditasi', '2018', 'IOT pendeteksi covid 19 interval jarak melalui GPS smartphone', 'Realtech', '2991-344b', '1354', '1 s/d 15', '012033', 'legit.com/jurnalPengembangan?55311', 2, 'http://localhost/ryankp/penelitian/berkas/PJ70jurnal.PDF'),
+('PJ912', 'Jurnal Internasional', '2019', 'Pengenalan IOT dan implementasi terhadap masyarakat tentang pengembangan IOT alat pendeteksi bencana', 'Realtech Nasional', '2089-4500', '3', '12-67', '6', 'github.com/ryankp.com', 2, 'http://localhost/ryankp/penelitian/berkas/PJ97Generated.pdf');
 
 -- --------------------------------------------------------
 
@@ -163,6 +171,7 @@ CREATE TABLE `penelitian_luaran` (
   `luaran_luaran` varchar(35) NOT NULL,
   `luaran_jenis` varchar(35) NOT NULL,
   `luaran_deskripsi_singkat` varchar(99) NOT NULL,
+  `user_id` int(10) NOT NULL,
   `luaran_berkas` varchar(99) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -188,7 +197,7 @@ CREATE TABLE `peneliti_asing` (
 --
 
 INSERT INTO `peneliti_asing` (`peneliti_id`, `peneliti_tahun`, `peneliti_nama`, `peneliti_jenis_kelamin`, `peneliti_akademik`, `peneliti_negara`, `peneliti_tanggal_mulai`, `peneliti_tanggal_selesai`) VALUES
-('PA142', '2020', 'Keny Sompotan', 'Pria', 'Master', 'Indonesia', '2020-12-24', '2022-04-30'),
+('PA142', '2020', 'Keny Sompotan S.T', 'Pria', 'Master', 'Indonesia', '2020-12-24', '2022-04-30'),
 ('PA473', '2015', 'Ryan Erlando Supit S.T.', 'Pria', 'Bachelor', 'Indonesia', '2020-12-23', '2021-03-31'),
 ('PA644', '2018', 'Hizkia Tontong', 'Pria', 'informatika', 'Perancis', '2020-12-01', '2020-12-31');
 
@@ -214,7 +223,8 @@ INSERT INTO `penulis` (`penulis_id`, `jurnal_id`, `penulis_nama_penulis`, `penul
 ('PS400', 'PJ912', 'Ryan Erlando Supit S.T.', 1),
 ('PS401', 'PJ912', 'Eston Suli S.Kom.', 2),
 ('PS402', 'PJ912', 'Cleonart Dotulong S.Kom.', 3),
-('PS761', 'PJ252', 'Ryan Erlando Supit S.T.', 2);
+('PS761', 'PJ252', 'Keny Sompotan', 2),
+('PS970', 'PJ903', 'Ryan Erlando Supit S.T.', 1);
 
 -- --------------------------------------------------------
 
@@ -266,7 +276,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_nama`, `user_nick`, `user_password`, `user_priority`) VALUES
-(1, 'Melani Adrian Ph.D', 'MA', '21232f297a57a5a743894a0e4a801fc3', 'admin');
+(1, 'Melani Adrian Ph.D', 'ma', 'c84258e9c39059a89ab77d846ddab909', 'admin'),
+(2, 'Junaidy Budi Sanger S.Kom., M.Kom', 'jbs', '21232f297a57a5a743894a0e4a801fc3', 'user'),
+(6, 'Ryan Erlando Supit S.T', 'res', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
+(7, 'Bragi Wewengkang S.T', 'bw', '21232f297a57a5a743894a0e4a801fc3', 'user');
 
 --
 -- Indexes for dumped tables
@@ -347,7 +360,7 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `user_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
