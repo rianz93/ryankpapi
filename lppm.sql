@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2021 at 09:22 AM
+-- Generation Time: Jan 03, 2021 at 07:58 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -197,9 +197,9 @@ CREATE TABLE `peneliti_asing` (
 --
 
 INSERT INTO `peneliti_asing` (`peneliti_id`, `peneliti_tahun`, `peneliti_nama`, `peneliti_jenis_kelamin`, `peneliti_akademik`, `peneliti_negara`, `peneliti_tanggal_mulai`, `peneliti_tanggal_selesai`) VALUES
-('PA142', '2020', 'Keny Sompotan S.T', 'Pria', 'Master', 'Indonesia', '2020-12-24', '2022-04-30'),
-('PA473', '2015', 'Ryan Erlando Supit S.T.', 'Pria', 'Bachelor', 'Indonesia', '2020-12-23', '2021-03-31'),
-('PA644', '2018', 'Hizkia Tontong', 'Pria', 'informatika', 'Perancis', '2020-12-01', '2020-12-31');
+('PA142', '2020', 'Keny Sompotan S.T M.Sc', 'Pria', 'Master', 'Indonesia', '2020-12-24', '2022-04-30'),
+('PA473', '2015', 'Ryan Erlando Supit S.T', 'Pria', 'Bachelor', 'Indonesia', '2020-12-23', '2021-03-31'),
+('PA644', '2019', 'Hizkia Tontong S.T', 'Pria', 'informatika', 'Perancis', '2020-12-01', '2020-12-31');
 
 -- --------------------------------------------------------
 
@@ -247,6 +247,97 @@ CREATE TABLE `penyelenggaraan_forum` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `pkm_mbh`
+--
+
+CREATE TABLE `pkm_mbh` (
+  `pkm_mbh_id` varchar(35) NOT NULL,
+  `pkm_mbh_tahun` varchar(50) NOT NULL,
+  `pkm_mbh_nama` varchar(35) NOT NULL,
+  `pkm_mbh_bidang_usaha` varchar(35) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `pkm_mbh_berkas` varchar(99) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pkm_mbh`
+--
+
+INSERT INTO `pkm_mbh` (`pkm_mbh_id`, `pkm_mbh_tahun`, `pkm_mbh_nama`, `pkm_mbh_bidang_usaha`, `user_id`, `pkm_mbh_berkas`) VALUES
+('MBH641', '2018', 'Mitra UMKM Makanan Lezat', 'Makanan Berat', 1, 'http://localhost/ryankp/pkm/berkas/MBH12Generated (2).pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pkm_uhk`
+--
+
+CREATE TABLE `pkm_uhk` (
+  `pkm_uhk_id` varchar(10) NOT NULL,
+  `pkm_uhk_tahun` varchar(35) NOT NULL,
+  `pkm_uhk_unit` varchar(35) NOT NULL,
+  `pkm_uhk_pengurus` varchar(50) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `pkm_uhk_berkas` varchar(99) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pkm_uhk`
+--
+
+INSERT INTO `pkm_uhk` (`pkm_uhk_id`, `pkm_uhk_tahun`, `pkm_uhk_unit`, `pkm_uhk_pengurus`, `user_id`, `pkm_uhk_berkas`) VALUES
+('UHK621', '2018', 'Kepala', 'rs', 1, 'http://localhost/ryankp/pkm/berkas/UHK51Generated (2).pdf'),
+('UHK961', '2017', 'rere', 'rere', 1, 'http://localhost/ryankp/pkm/berkas/UHK70Generated (2).pdf'),
+('UHK971', '2018', 'Kelapa', 'Ryan S', 1, 'http://localhost/ryankp/pkm/berkas/UHK10Generated (2).pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk_tersertifikasi`
+--
+
+CREATE TABLE `produk_tersertifikasi` (
+  `produk_tersertifikasi_id` varchar(35) NOT NULL,
+  `produk_tersertifikasi_tahun` varchar(50) NOT NULL,
+  `produk_tersertifikasi_produk` varchar(50) NOT NULL,
+  `produk_tersertifikasi_sertifikasi` varchar(50) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `produk_tersertifikasi_berkas` varchar(99) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk_tersertifikasi`
+--
+
+INSERT INTO `produk_tersertifikasi` (`produk_tersertifikasi_id`, `produk_tersertifikasi_tahun`, `produk_tersertifikasi_produk`, `produk_tersertifikasi_sertifikasi`, `user_id`, `produk_tersertifikasi_berkas`) VALUES
+('PT292', '2018', 'Makanan Ringan', '', 1, 'http://localhost/ryankp/pkm/berkas/PT33Generated (2).pdf'),
+('PT471', '2018', 'Arduino Pendeteksi Banjir', 'MIT License', 1, 'http://localhost/ryankp/pkm/berkas/PT52Generated (2).pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `produk_terstandarisasi`
+--
+
+CREATE TABLE `produk_terstandarisasi` (
+  `produk_terstandarisasi_id` varchar(35) NOT NULL,
+  `produk_terstandarisasi_tahun` varchar(35) NOT NULL,
+  `produk_terstandarisasi_produk` varchar(35) NOT NULL,
+  `produk_terstandarisasi_standarisasi` varchar(50) NOT NULL,
+  `user_id` int(10) NOT NULL,
+  `produk_terstandarisasi_berkas` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `produk_terstandarisasi`
+--
+
+INSERT INTO `produk_terstandarisasi` (`produk_terstandarisasi_id`, `produk_terstandarisasi_tahun`, `produk_terstandarisasi_produk`, `produk_terstandarisasi_standarisasi`, `user_id`, `produk_terstandarisasi_berkas`) VALUES
+('PTS101', '2018', 'Makanan Ringan', 'MUI', 1, 0);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `unit_bisnis_hr`
 --
 
@@ -276,7 +367,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `user_nama`, `user_nick`, `user_password`, `user_priority`) VALUES
-(1, 'Melani Adrian Ph.D', 'ma', 'c84258e9c39059a89ab77d846ddab909', 'admin'),
+(1, 'Melani Adrian Ph.D', 'ma', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
 (2, 'Junaidy Budi Sanger S.Kom., M.Kom', 'jbs', '21232f297a57a5a743894a0e4a801fc3', 'user'),
 (6, 'Ryan Erlando Supit S.T', 'res', '21232f297a57a5a743894a0e4a801fc3', 'admin'),
 (7, 'Bragi Wewengkang S.T', 'bw', '21232f297a57a5a743894a0e4a801fc3', 'user');
@@ -339,6 +430,30 @@ ALTER TABLE `penulis`
 --
 ALTER TABLE `penyelenggaraan_forum`
   ADD PRIMARY KEY (`penyelenggaraan_forum_id`);
+
+--
+-- Indexes for table `pkm_mbh`
+--
+ALTER TABLE `pkm_mbh`
+  ADD PRIMARY KEY (`pkm_mbh_id`);
+
+--
+-- Indexes for table `pkm_uhk`
+--
+ALTER TABLE `pkm_uhk`
+  ADD PRIMARY KEY (`pkm_uhk_id`);
+
+--
+-- Indexes for table `produk_tersertifikasi`
+--
+ALTER TABLE `produk_tersertifikasi`
+  ADD PRIMARY KEY (`produk_tersertifikasi_id`);
+
+--
+-- Indexes for table `produk_terstandarisasi`
+--
+ALTER TABLE `produk_terstandarisasi`
+  ADD PRIMARY KEY (`produk_terstandarisasi_id`);
 
 --
 -- Indexes for table `unit_bisnis_hr`
