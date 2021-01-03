@@ -1,7 +1,7 @@
 <?php 
 	require '../api_conf.php';
 
-	$head = array("Tahun", "Nama Dosen","NIDN", "Judul", "Penerbit", "ISBN","Halaman");
+	$head = array("Tahun", "Nama Dosen","NIDN", "Judul", "Penerbit", "ISBN","Halaman","aksi");
 	$body = [];
 
 	$buku_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_buku_ajar`"));
