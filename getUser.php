@@ -1,6 +1,6 @@
 <?php 	
 	require('api_conf.php');
-	$userTemp = json_decode($dale->kueri("SELECT * FROM user"));
+	$userTemp = json_decode($dale->kueri("SELECT * FROM user ORDER BY user_priority"));
 	$userData = [];
 	for($i = 0; $i < sizeof($userTemp); $i++){
 		$userData[$i]['id'] 	  =  $userTemp[$i]  -> user_id;

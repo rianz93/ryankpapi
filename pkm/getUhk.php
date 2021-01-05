@@ -4,7 +4,7 @@
 	$head = array("Tahun", "Unit Usaha", "Pengurus");
 	$body = [];
 	if(isset($_GET['id'])){
-		$uhk_temp = json_decode($dale->kueri("SELECT * FROM `pkm_uhk` where user_data = '".$_GET['id']."'"));
+		$uhk_temp = json_decode($dale->kueri("SELECT * FROM `pkm_uhk` where user_id = '".$_GET['id']."'"));
 	}else{
 		$uhk_temp = json_decode($dale->kueri("SELECT * FROM `pkm_uhk`"));
 	}

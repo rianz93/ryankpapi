@@ -4,7 +4,7 @@
 	$head = array("Tahun", "Nama Produk", "Sertifikasi");
 	$body = [];
 	if(isset($_GET['id'])){
-		$pt_temp = json_decode($dale->kueri("SELECT * FROM `produk_tersertifikasi` where user_data = '".$_GET['id']."'"));
+		$pt_temp = json_decode($dale->kueri("SELECT * FROM `produk_tersertifikasi` where user_id = '".$_GET['id']."'"));
 	}else{
 		$pt_temp = json_decode($dale->kueri("SELECT * FROM `produk_tersertifikasi`"));
 	}

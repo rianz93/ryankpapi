@@ -8,7 +8,8 @@
 							'id' 	 	=> $validateLogin[0] -> user_id,
 							'nick'		=> $validateLogin[0] -> user_nick,
 						   	'nama' 	 	=> $validateLogin[0] -> user_nama,
-						   	'priority' 	=> $validateLogin[0] -> user_priority);
+						   	'priority' 	=> $validateLogin[0] -> user_priority,
+						   	'password'	=> $validateLogin[0] -> user_password);
 		echo json_encode($data_pack);
 
 	}else{
