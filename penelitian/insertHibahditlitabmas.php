@@ -29,6 +29,7 @@ else{
 				   		hibah_personil_penelitian 	= '".$_POST['personil']."',
 				   		hibah_jabatan 		 		= '".$_POST['jabatan']."',
 				   		hibah_bidang_penelitian 	= '".$_POST['bidang']."',
+				   		user_id						= '".$_POST['user_id']."',
 				   		hibah_dana 	 				= '".$_POST['dana']."'
 
 				   		ON DUPLICATE KEY UPDATE

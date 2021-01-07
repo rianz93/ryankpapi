@@ -40,6 +40,7 @@ else{
 				   		buku_ajar_penerbit 		 	= '".$_POST['penerbit']."',
 				   		buku_ajar_ISBN 				= '".$_POST['isbn']."',
 				   		buku_ajar_jumlah_halaman 	= '".$_POST['jumlahHalaman']."',
+				   		user_id						= '".$_POST['user_id']."',
 				   		buku_ajar_halaman_cover		= '".$pathFile."'
 				
 				   		ON DUPLICATE KEY UPDATE

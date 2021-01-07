@@ -33,7 +33,7 @@ else{
 				   		hibah_nonditlitabmas_sumber_dana 			= '".$_POST['sumber']."',
 				   		hibah_nonditlitabmas_institusi 				= '".$_POST['institusi']."',
 				   		user_id										= '".$_POST['user_id']."',
-				   		hibah_nonditlitabmas_jumlah_dana 	 				= '".$_POST['dana']."'
+				   		hibah_nonditlitabmas_jumlah_dana 	 		= '".$_POST['dana']."'
 
 				   		ON DUPLICATE KEY UPDATE
 
@@ -45,7 +45,7 @@ else{
 				   		hibah_nonditlitabmas_bidang_penelitian 		= '".$_POST['bidang']."',
 				   		hibah_nonditlitabmas_sumber_dana 			= '".$_POST['sumber']."',
 				   		hibah_nonditlitabmas_institusi 				= '".$_POST['institusi']."',
-				   		hibah_nonditlitabmas_jumlah_dana 	 				= '".$_POST['dana']."'
+				   		hibah_nonditlitabmas_jumlah_dana 	 		= '".$_POST['dana']."'
 				 	");
 
 	echo json_encode(array('status' => 'berhasil'));

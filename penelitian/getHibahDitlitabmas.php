@@ -4,7 +4,14 @@ require '../api_conf.php';
 $head = array("Tahun Kegiatan","Judul Penelitian", "Personil", "Jabatan", "Bidang Penelitian", "Dana");
 $body = [];
 
-$hibah_ditlitabmas_temp = json_decode($dale->kueri("SELECT * FROM `hibah_ditlitabmas`"));
+if(isset($_GET['id'])){
+		$hibah_ditlitabmas_temp = json_decode($dale->kueri("SELECT * FROM `hibah_ditlitabmas` WHERE user_id ='".$_GET['id']."
+			'"));
+	}else{
+		$hibah_ditlitabmas_temp = json_decode($dale->kueri("SELECT * FROM `hibah_ditlitabmas`"));
+	}
+
+
 
 for($i= 0; $i < sizeof($hibah_ditlitabmas_temp); $i++){
 	$hibah_ditlitabmas_id 					= $hibah_ditlitabmas_temp[$i] -> hibah_id;

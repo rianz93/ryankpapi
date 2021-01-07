@@ -41,6 +41,7 @@ else{
 				   		hki_no_pendaftaran 	= '".$_POST['noPendaftaran']."',
 				   		hki_status 			= '".$_POST['status']."',
 				   		hki_nomor 			= '".$_POST['noHki']."',
+				   		user_id				= '".$_POST['user_id']."',
 				   		hki_berkas 			= '".$pathFile."'
 
 				   		ON DUPLICATE KEY UPDATE

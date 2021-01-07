@@ -1,10 +1,13 @@
 <?php 
 	require '../api_conf.php';
 
-	$head = array("Tahun", "Nama Dosen","NIDN", "Judul", "Penerbit", "ISBN","Halaman","aksi");
+	$head = array("Tahun", "Nama Dosen","NIDN", "Judul", "Penerbit", "ISBN","Halaman");
 	$body = [];
-
-	$buku_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_buku_ajar`"));
+	if(isset($_GET['id'])){
+		$buku_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_buku_ajar` WHERE user_id ='".$_GET['id']."'"));
+	}else{
+		$buku_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_buku_ajar` "));
+	}
 
 	for($i = 0; $i < sizeof($buku_temp); $i++){
 		$buku_ajar_id 				= $buku_temp[$i] -> buku_ajar_id;

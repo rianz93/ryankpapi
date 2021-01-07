@@ -3,8 +3,12 @@
 
 	$head = array("Tahun", "Nama","Jenis Kelamin", "Akademik", "Negara", "Tanggal tinggal",);
 	$body = [];
-
-	$peneliti_temp = json_decode($dale->kueri("SELECT * FROM `peneliti_asing`"));
+	if(isset($_GET['id'])){
+		$peneliti_temp = json_decode($dale->kueri("SELECT * FROM `peneliti_asing`  WHERE user_id ='".$_GET['id']."'"));
+	}else{
+		$peneliti_temp = json_decode($dale->kueri("SELECT * FROM `peneliti_asing`"));
+	}
+	
 
 	for($i = 0; $i < sizeof($peneliti_temp); $i++){
 		$peneliti_id 				= $peneliti_temp[$i] -> peneliti_id;

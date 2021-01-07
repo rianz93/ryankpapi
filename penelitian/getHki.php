@@ -3,8 +3,12 @@
 
 	$head = array("Tahun", "Nama Dosen","NIDN", "judul", "Jenis", "No pendaftaran","Status","Nomor HKI");
 	$body = [];
-
-	$hki_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_hki`"));
+	if(isset($_GET['id'])){
+		$hki_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_hki` WHERE user_id ='".$_GET['id']."'"));
+	}else{
+		$hki_temp = json_decode($dale->kueri("SELECT * FROM `penelitian_hki`"));
+	}
+	
 
 	for($i = 0; $i < sizeof($hki_temp); $i++){
 		$hki_id 				= $hki_temp[$i] -> hki_id;

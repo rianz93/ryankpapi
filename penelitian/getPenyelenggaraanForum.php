@@ -3,8 +3,12 @@
 
 	$head = array("Tahun Kegiatan", "Nama Kegiatan","Level", "Pelaksana", "Mitra", "Tanggal Pelaksanaan","Tempat",);
 	$body = [];
-
-	$PF = json_decode($dale->kueri("SELECT * FROM `penyelenggaraan_forum`"));
+	if(isset($_GET['id'])){
+		$PF = json_decode($dale->kueri("SELECT * FROM `penyelenggaraan_forum` where user_id = '".$_GET['id']."'"));
+	}else{
+		$PF = json_decode($dale->kueri("SELECT * FROM `penyelenggaraan_forum`"));
+	}
+	
 
 	for($i = 0; $i < sizeof($PF); $i++){
 		$penyelenggaraan_forum_id 				= $PF[$i] -> penyelenggaraan_forum_id;

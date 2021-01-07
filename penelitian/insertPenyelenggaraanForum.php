@@ -31,6 +31,7 @@ else{
 				   		penyelenggaraan_forum_mitra 			= '".$_POST['mitra']."',
 				   		penyelenggaraan_forum_tanggal_mulai 	= '".$_POST['tanggalstart']."',
 				   		penyelenggaraan_forum_tanggal_selesai 	= '".$_POST['tanggalend']."',
+				   		user_id									= '".$_POST['user_id']."',
 				   		penyelenggaraan_forum_tempat 	 		= '".$_POST['tempat']."'
 
 				   		ON DUPLICATE KEY UPDATE

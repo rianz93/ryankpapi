@@ -30,6 +30,7 @@ else{
 				   		peneliti_akademik 		 = '".$_POST['akademik']."',
 				   		peneliti_negara 		 = '".$_POST['negara']."',
 				   		peneliti_tanggal_mulai 	 = '".$_POST['tanggalstart']."',
+				   		user_id					 = '".$_POST['user_id']."',
 				   		peneliti_tanggal_selesai = '".$_POST['tanggalend']."'
 
 				   		ON DUPLICATE KEY UPDATE
