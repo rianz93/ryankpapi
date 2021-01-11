@@ -25,11 +25,11 @@ else{
 	}
 
 	$dale-> kueri("INSERT INTO `aktivitas` 
-				   SET 	aktivitas_aktivitas = '".$aktivitas."',
-				   		aktivitas_pelaporan = 'Peneliti Asing',
-				   		aktivitas_pengguna	= '".$_POST['user_name']."',
-				   		aktivitas_keterangan = '".'Nama Peneliti : '.$_POST['nama']."',
-				   		_rowVariant = '".$_rowVariant."'
+				   SET 	aktivitas_aktivitas 	= '".$aktivitas."',
+				   		aktivitas_pelaporan 	= 'Peneliti Asing',
+				   		aktivitas_pengguna		= '".$_POST['user_name']."',
+				   		aktivitas_keterangan 	= '".'Nama Peneliti : '.$_POST['nama']."',
+				   		_rowVariant 			= '".$_rowVariant."'
 				   	");
 
 	// MEMASUKKAN DATA DALAM DATABASE
@@ -41,7 +41,6 @@ else{
 				   		peneliti_akademik 		 = '".$_POST['akademik']."',
 				   		peneliti_negara 		 = '".$_POST['negara']."',
 				   		peneliti_tanggal_mulai 	 = '".$_POST['tanggalstart']."',
-				   		user_id					 = '".$_POST['user_id']."',
 				   		peneliti_tanggal_selesai = '".$_POST['tanggalend']."'
 
 				   		ON DUPLICATE KEY UPDATE

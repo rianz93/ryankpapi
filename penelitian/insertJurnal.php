@@ -25,17 +25,27 @@ else{
 
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
+		$aktivitas 		= "Mengubah Pelaporan";
+		$_rowVariant 	= "warning";
 
 	// MENARIK ID PENULIS BERDASARKAN JURNAL ID
 	$penulis_id_temp = json_decode($dale->kueri("SELECT penulis_id FROM penulis as a INNER JOIN penelitian_jurnal as b ON a.jurnal_id = b.jurnal_id WHERE a.jurnal_id = '".$id."' ORDER BY a.penulis_ke ASC"));	
 	}
 	else{
 		$id = $new_id;
-
+		$aktivitas 		= "Menambah Pelaporan";
+		$_rowVariant 	= "success";
 	}
 	if($_POST['user_id']){
 		$user_id = $_POST['user_id'];
 	}
+	$dale-> kueri("INSERT INTO `aktivitas` 
+				   SET 	aktivitas_aktivitas 	= '".$aktivitas."',
+				   		aktivitas_pelaporan 	= 'Publikasi Jurnal (Penelitian)',
+				   		aktivitas_pengguna		= '".$_POST['user_name']."',
+				   		aktivitas_keterangan 	= '".'Nama Judul : '.$_POST['judul']."',
+				   		_rowVariant 			= '".$_rowVariant."'
+				   	");
 	// MEMASUKKAN DATA DALAM DATABASE
 	$dale-> kueri("INSERT INTO `penelitian_jurnal` 
 				   SET 	jurnal_id 			 	= '".$id."',

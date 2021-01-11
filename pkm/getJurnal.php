@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 	require '../api_conf.php';
 
 	$head = array("Jenis Jurnal", "Tahun","Judul", "Nama Penulis","Jurnal", "Url");
