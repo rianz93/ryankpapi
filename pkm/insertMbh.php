@@ -24,12 +24,22 @@ if(count($_POST) == 0){
 else{
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
+		$aktivitas 		= "Mengubah Pelaporan";
+		$_rowVariant 	= "warning";
 	}
 	else{
 		$id = $new_id;
+		$aktivitas 		= "Menambah Pelaporan";
+		$_rowVariant 	= "success";
 	}
 
-	
+	$dale-> kueri("INSERT INTO `aktivitas` 
+				   SET 	aktivitas_aktivitas 	= '".$aktivitas."',
+				   		aktivitas_pelaporan 	= 'Mitra Berbadan Hukum',
+				   		aktivitas_pengguna		= '".$_POST['user_name']."',
+				   		aktivitas_keterangan 	= '".'Nama Mitra : '.$_POST['nama']."',
+				   		_rowVariant 			= '".$_rowVariant."'
+				   	");
 	// MEMASUKKAN DATA DALAM DATABASE
 	$dale-> kueri("INSERT INTO `pkm_mbh` 
 				   SET 	pkm_mbh_id 			 		= '".$id."',

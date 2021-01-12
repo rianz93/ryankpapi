@@ -176,7 +176,7 @@ else if($namaTable == "penelitian_buku_ajar"){
 				   	");
 }
 
-// $dale->kueri("DELETE FROM ".$namaTable." WHERE ".$namaId." = '".$valueId."'");
+$dale->kueri("DELETE FROM ".$namaTable." WHERE ".$namaId." = '".$valueId."'");
 
 echo json_encode(array('status'=>'berhasil'));
  ?>

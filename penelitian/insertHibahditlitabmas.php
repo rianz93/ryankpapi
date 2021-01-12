@@ -15,11 +15,22 @@ if(count($_POST) == 0){
 else{
 	if(isset($_POST['id'])){
 		$id = $_POST['id'];
+		$aktivitas 		= "Mengubah Pelaporan";
+		$_rowVariant 	= "warning";
 	}
 	else{
 		$id = $new_id;
+		$aktivitas 		= "Menambah Pelaporan";
+		$_rowVariant 	= "success";
 	}
 
+	$dale-> kueri("INSERT INTO `aktivitas` 
+				   SET 	aktivitas_aktivitas 	= '".$aktivitas."',
+				   		aktivitas_pelaporan 	= 'Hibah Ditlitabmas (Penelitian)',
+				   		aktivitas_pengguna		= '".$_POST['user_name']."',
+				   		aktivitas_keterangan 	= '".'Nama Judul : '.$_POST['judul']."',
+				   		_rowVariant 			= '".$_rowVariant."'
+				   	");
 	
 	// MEMASUKKAN DATA DALAM DATABASE
 	$dale-> kueri("INSERT INTO `hibah_ditlitabmas` 
